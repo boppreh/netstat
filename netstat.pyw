@@ -18,7 +18,7 @@ def drop_problems(ping_times, expected_n, test_name):
     dropped_packets = expected_n - len(ping_times)
     print dropped_packets
     if dropped_packets > 0:
-        return [('drop', 
+        return [('packet loss', 
                  '{} is dropping packets ({} out of {}).'.format(test_name,
                                                                  dropped_packets,
                                                                  expected_n))]
