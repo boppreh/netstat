@@ -2,7 +2,7 @@ from subprocess import Popen, PIPE
 import re
 import time
 
-def ping(host='google.com', n=5, timeout_milliseconds=1000):
+def ping(host='google.com', n=10, timeout_milliseconds=1000):
     """
     Pings an address n times, returning a list of ping times. In case of
     timeout, the value is omitted.
@@ -66,7 +66,7 @@ def get_problems(ping_times, expected_n, test_name):
 from collections import defaultdict
 results = defaultdict(list)
 
-def process(host, test_name, n=5, timeout_milliseconds=1000):
+def process(host, test_name, n=10, timeout_milliseconds=1000):
     """
     Runs a ping test on a given host, yielding problems that have appeared or
     disappeared since the last 'process' call with the same host.
