@@ -1,6 +1,5 @@
 from subprocess import Popen, PIPE
 import re
-import time
 
 def ping(host='google.com', n=10, timeout_milliseconds=1000):
     """
@@ -16,7 +15,6 @@ def drop_problems(ping_times, expected_n, test_name):
     Checks if the given ping times have had packet loss problems.
     """
     dropped_packets = expected_n - len(ping_times)
-    print dropped_packets
     if dropped_packets > 0:
         return [('packet loss', 
                  '{} is dropping packets ({} out of {}).'.format(test_name,
@@ -100,8 +98,11 @@ def process(host, test_name, n=10, timeout_milliseconds=1000):
 
 
 if __name__ == '__main__':
+    import time
+
     from background import tray, notify
     tray('Network status', 'globe-network.ico')
+
     while True:
         messages = []
         messages.extend(process('192.168.0.1', 'local network'))
@@ -110,4 +111,5 @@ if __name__ == '__main__':
         messages.extend(process('www.google.com', 'google search'))
         if messages:
             notify('Network', '\n'.join(messages))
+
         time.sleep(60)
