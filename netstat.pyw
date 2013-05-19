@@ -15,7 +15,7 @@ def drop_problems(ping_times, expected_n, test_name):
     Checks if the given ping times have had packet loss problems.
     """
     dropped_packets = expected_n - len(ping_times)
-    if dropped_packets > 0:
+    if dropped_packets > expected_n / 3:
         return [('packet loss', 
                  '{} is dropping packets ({} out of {}).'.format(test_name,
                                                                  dropped_packets,
