@@ -103,6 +103,9 @@ if __name__ == '__main__':
     from background import tray, notify
     tray('Network status', 'globe-network.ico')
 
+    from simpleserver import serve
+    serve(results, port=2343)
+
     while True:
         messages = []
         messages.extend(process('192.168.0.1', 'local network'))
