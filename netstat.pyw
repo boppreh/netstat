@@ -100,7 +100,7 @@ def process(host, test_name, n=10, timeout_milliseconds=1000):
 if __name__ == '__main__':
     import time
 
-    from background import tray, notify
+    from tray import tray, notify
     tray('Network status', 'globe-network.ico')
 
     from simpleserver import serve
